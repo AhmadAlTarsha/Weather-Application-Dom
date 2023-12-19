@@ -1,6 +1,7 @@
 *{
     box-sizing: border-box;
     margin: 0;
+    font-family: cursive
 }
 body{
     background-color: #44AFF2;
@@ -32,6 +33,28 @@ body{
 
 #logo{
     
-    height: 30%;
+    height: 40%;
 background-color:transparent ;
+}
+#start-c{
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+    width:50%;
+    height: 100%;
+}
+#websiteDescription{
+    color: gray;
+}
+#start-btn{
+    cursor: pointer;
+    color:white;
+    font-size: medium;
+    padding :10px 40px;
+    border: 0px;
+    border-radius: 20px;
+    background-color: #44AFF2;
 }

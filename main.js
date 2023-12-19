@@ -34,11 +34,22 @@ logoContainer.id="logo-c"
 
 const logo=document.createElement("img")
 logo.id="logo"
-logo.src="./assets/images/website_logo.png"
+logo.src="./assets/images/website-logo.png"
 logoContainer.append(logo)
 
 const startContainer=document.createElement("section")
 startContainer.id="start-c"
+const websiteName=document.createElement("h1")
+websiteName.innerText="Weather Wise Hub"
+websiteName.id="webSiteName"
+const websiteDescription=document.createElement("h3")
+websiteDescription.id="websiteDescription"
+websiteDescription.innerText="Weather App"
+const startButton=document.createElement('button')
+startButton.innerText="start"
+startButton.id="start-btn"
+
+startContainer.append(websiteName,websiteDescription,startButton)
 welcomeScreenContainer.append(logoContainer,startContainer)
 console.log(welcomeScreenContainer);
 

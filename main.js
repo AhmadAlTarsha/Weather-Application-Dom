@@ -1,26 +1,78 @@
-//using Dom To Call body to Holds HTML element
-const body =document.querySelector("body")
-// first i need to know how i can get my position after search I found this function to git the location
-// navigator.geolocation.getCurrentPosition(success,error);
-//this fun take tow parameter both of them is callBack fun 
-// this fun return an object (coords) contains a lot of proparety i think i need (latitude,longitude)
-// finally to git the weather from API i need to compare the lat and long that i have from the geolocation fun
-// and return the object from API that match my coord to git the right one 
-//-------
-//ok i think i can solve it In two ways: Either by tracking the user's location and making it a dynamic process by
-//using navigator.geolocation.watchPosition;
-//or I get the user's current location and when his done when he out and want use the website agin
-//call the function agin to git his position
+
+/* first i need to know how i can get my position after search I found this function to git the location
+navigator.geolocation.getCurrentPosition(success,error);
+this fun take tow parameter both of them is callBack fun 
+this fun return an object (coords) contains a lot of proparety i think i need (latitude,longitude)
+finally to git the weather from API i need to compare the lat and long that i have from the geolocation fun
+and return the object from API that match my coord to git the right one
+ ok i think i can solve it In two ways: Either by tracking the user's location and making it a dynamic process by
+ using navigator.geolocation.watchPosition;
+ or I get the user's current location and when his done when he out and want use the website agin
+/ call the function agin to git his position*/
 
 // i need to store lat and long from the function to use it in the weather api to make the process dynamic  
-//!--------
 
-//create div to hold all welcome screen
+
+//!--------------------------------------------Start design the website-------------------------------------------//
+
+//using Dom To Call body to Holds HTML element
+const body =document.querySelector("body")
+
+
+//! create welcome screen
+
+// this div contain all element of welcome screen
 const welcomeScreenContainer=document.createElement("div")
 welcomeScreenContainer.id="w-s-c"
 body.append(welcomeScreenContainer)
 
+// create logo  and start div inside the  welcomeScreenContainer
+const logoContainer=document.createElement("div")
+logoContainer.id="logo-c"
+
+// create img element inside the logoContainer to add website logo 
+
+const logo=document.createElement("img")
+logo.id="logo"
+logo.src="./assets/images/website_logo.png"
+logoContainer.append(logo)
+
+const startContainer=document.createElement("section")
+startContainer.id="start-c"
+welcomeScreenContainer.append(logoContainer,startContainer)
 console.log(welcomeScreenContainer);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // let lat;

@@ -11,41 +11,61 @@ const body =document.querySelector("body")
 //using navigator.geolocation.watchPosition;
 //or I get the user's current location and when his done when he out and want use the website agin
 //call the function agin to git his position
-const button=document.createElement("button")
-body.append(button)
-button.innerText="get my location"
-const userLocation=()=>{
-const success=(location)=>{
-    console.log(location);
-}
-const err=(err)=>{
-    console.log(err);
-}
-navigator.geolocation.getCurrentPosition(success,err);
 
-}
+// i need to store lat and long from the function to use it in the weather api to make the process dynamic  
+//!--------
 
-button.addEventListener("click",userLocation)
+//create div to hold all welcome screen
+const welcomeScreenContainer=document.createElement("div")
+welcomeScreenContainer.id="w-s-c"
+body.append(welcomeScreenContainer)
+
+console.log(welcomeScreenContainer);
+
+
+// let lat;
+// let long;
+
+
+// const button=document.createElement("button")
+// body.append(button)
+// button.innerText="get my location"
+// const userLocation=()=>{
+// const success=(location)=>{
+//     lat=location?.coords?.latitude
+//     long=location?.coords?.longitude
+   
+// }
+
+// const err=(err)=>{
+//     console.log(err);
+// }
+// navigator.geolocation.getCurrentPosition(success,err);
+
+// }
+// userLocation()
+
+
 // const  currentWeather=async()=>{
 //     try {
-//            const res= await fetch("https://api.openweathermap.org/data/2.5/weather?lat=31.962552&lon=35.9043006&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric")
+//            const res= await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric`)
 // const data = await res.json() 
 // console.log(data.main.temp);
 //     } catch (error) {
-        
+//        console.log(error); 
 //     }
 
 
 // }
-  
+//   button.addEventListener("click",currentWeather)
   
 //  currentWeather()
-const ress=async()=>{
-    const res= await fetch("https://api.openweathermap.org/data/2.5/weather?lat=31.962552&lon=35.9043006&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric").then(res=>res.json()).then((currentWeather)=>{
-        console.log(currentWeather.main.temp);
-    }).catch((err)=>{console.log(err);})
+// const ress=async()=>{
+//     const res= await fetch("https://api.openweathermap.org/data/2.5/weather?lat=31.962552&lon=35.9043006&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric").then(res=>res.json()).then((currentWeather)=>{
+//         console.log(currentWeather.main.temp);
+//     }).catch((err)=>{console.log(err);})
     
 
-}
-ress()
+// }
+// ress()
 

@@ -26,12 +26,12 @@ navigator.geolocation.getCurrentPosition(success,err);
 }
 
 button.addEventListener("click",userLocation)
-const weatherApi=async()=>{
-   const res= await fetch("https://api.openweathermap.org/data/2.5/weather?lat=31.962552&lon=35.9043006&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric").then((res)=>{
-    console.log(res);
-   }).catch(err=>{
-    console.log(err);
-   }).json()
-return res
+async function currentWeather(){
+     const res= await fetch("https://api.openweathermap.org/data/2.5/weather?lat=31.962552&lon=35.9043006&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric")
+const data = await res.json()
+console.log(data.main.temp);
 }
-weatherApi()
+  
+  
+currentWeather()
+

@@ -19,47 +19,48 @@ and return the object from API that match my coord to git the right one
  const body =document.querySelector("body")
 
 
-// //!----- create welcome screen
+// //!------------------------------------------- create welcome screen
 
-// this div contain all element of welcome screen
-const welcomeScreenContainer=document.createElement("div")
-welcomeScreenContainer.id="w-s-c"
-body.append(welcomeScreenContainer)
+// // this div contain all element of welcome screen
+// const welcomeScreenContainer=document.createElement("div")
+// welcomeScreenContainer.id="w-s-c"
+// body.append(welcomeScreenContainer)
 
-// create logo  and start div inside the  welcomeScreenContainer
-const logoContainer=document.createElement("div")
-logoContainer.id="logo-c"
+// // create logo  and start div inside the  welcomeScreenContainer
+// const logoContainer=document.createElement("div")
+// logoContainer.id="logo-c"
 
-// create img element inside the logoContainer to add website logo 
+// // create img element inside the logoContainer to add website logo 
 
-const logo=document.createElement("img")
-logo.id="logo"
-logo.src="./assets/images/website-logo.png"
-logoContainer.append(logo)
+// const logo=document.createElement("img")
+// logo.id="logo"
+// logo.src="./assets/images/website-logo.png"
+// logoContainer.append(logo)
 
-//create section to hold information about the website
+// //create section to hold information about the website
 
-const startContainer=document.createElement("section")
-startContainer.id="start-c"
-// website name
-const websiteName=document.createElement("h1")
-websiteName.innerText="Weather Wise Hub"
-websiteName.id="webSiteName"
+// const startContainer=document.createElement("section")
+// startContainer.id="start-c"
+// // website name
+// const websiteName=document.createElement("h1")
+// websiteName.innerText="Weather Wise Hub"
+// websiteName.id="webSiteName"
 
-//website Description
+// //website Description
 
-const websiteDescription=document.createElement("h3")
-websiteDescription.id="websiteDescription"
-websiteDescription.innerText="Weather App"
+// const websiteDescription=document.createElement("h3")
+// websiteDescription.id="websiteDescription"
+// websiteDescription.innerText="Weather App"
 
-//create button to start the website
-const startButton=document.createElement('button')
-startButton.innerText="start"
-startButton.id="start-btn"
+// //create button to start the website
+// const startButton=document.createElement('button')
+// startButton.innerText="start"
+// startButton.id="start-btn"
 
-startContainer.append(websiteName,websiteDescription,startButton)
-welcomeScreenContainer.append(logoContainer,startContainer)
-console.log(welcomeScreenContainer);
+// // append all website info to the start container(section tag)
+// startContainer.append(websiteName,websiteDescription,startButton)
+// welcomeScreenContainer.append(logoContainer,startContainer)
+
 
 // //!----EventListener functions
 // document.querySelector("#start-btn").addEventListener("click",()=>{
@@ -67,8 +68,45 @@ console.log(welcomeScreenContainer);
 // })
 
 
+// //!------------------------------------------- create main screen
+
+// create div to holds all main screen HTML element
+const mainScreenContainer=document.createElement("div")
+mainScreenContainer.id="m-s-c"
+body.append(mainScreenContainer)
+
+//create current location and weather information section
+
+const currentLocationContainer=document.createElement("section")
+
+currentLocationContainer.id="currentLocationContainer"
+mainScreenContainer.append(currentLocationContainer)
+
+//weather icon
+const weatherIcon=document.createElement("img")
+weatherIcon.src=`https://openweathermap.org/img/w/10d.png`
+weatherIcon.id="weatherIcon"
+currentLocationContainer.append(weatherIcon)
+
+//temperature
+const temperature=document.createElement("h2")
+temperature.innerText=`7`
+temperature.id="temperature"
+currentLocationContainer.append(temperature)
+
+//user location 
+const currentLocation=document.createElement("h1")
+currentLocation.innerText=`JORDAN`
+currentLocation.id="currentLocation"
+currentLocationContainer.append(currentLocation)
 
 
+
+//user city
+const currentCity=document.createElement("h4")
+currentCity.innerText=`Amman`
+currentCity.id="currentCity"
+currentLocationContainer.append(currentCity)
 
 
 

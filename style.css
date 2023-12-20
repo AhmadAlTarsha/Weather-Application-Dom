@@ -1,3 +1,4 @@
+/*!---------------------------------------------------------- universal design */
 *{
     box-sizing: border-box;
     margin: 0;
@@ -10,7 +11,7 @@ body{
     align-items: center;
     overflow: hidden;
 }
-
+/* !--------------------------------------------------start welcome screen style */
 #w-s-c{
     display: flex;
    margin: 3% ;
@@ -57,4 +58,20 @@ background-color:transparent ;
     border: 0px;
     border-radius: 20px;
     background-color: #44AFF2;
+}
+/* !--------------------------------------------------end welcome screen style */
+
+
+
+/*!---------------------------------------------------start style main screen */
+#m-s-c{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  
+    width:100%;
+    height: 100dvh;
+    background-color: #777e85;
+    
+    
 }

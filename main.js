@@ -79,18 +79,21 @@ body.append(mainScreenContainer)
 
 const currentLocationContainer=document.createElement("section")
 
-currentLocationContainer.id="currentLocationContainer"
+currentLocationContainer.id="currentLocationSection"
 mainScreenContainer.append(currentLocationContainer)
 
 //weather icon
+const imgContainer=document.createElement("div")
+imgContainer.id="img-container"
+currentLocationContainer.append(imgContainer)
 const weatherIcon=document.createElement("img")
 weatherIcon.src=`https://openweathermap.org/img/w/10d.png`
 weatherIcon.id="weatherIcon"
-currentLocationContainer.append(weatherIcon)
+imgContainer.append(weatherIcon)
 
 //temperature
-const temperature=document.createElement("h2")
-temperature.innerText=`7`
+const temperature=document.createElement("h1")
+temperature.innerText=`7${String.fromCharCode(176)}C`
 temperature.id="temperature"
 currentLocationContainer.append(temperature)
 
@@ -100,24 +103,53 @@ currentLocation.innerText=`JORDAN`
 currentLocation.id="currentLocation"
 currentLocationContainer.append(currentLocation)
 
-
-
 //user city
-const currentCity=document.createElement("h4")
+const currentCity=document.createElement("h3")
 currentCity.innerText=`Amman`
 currentCity.id="currentCity"
 currentLocationContainer.append(currentCity)
 
+// weather humidity and wind speed this div holds tow section  ( wind speed and Humidity)
+
+const humAndWindContainer=document.createElement("div")
+humAndWindContainer.id="H-W-C"
+currentLocationContainer.append(humAndWindContainer)
+
+//humidity section
 
 
+const humiditySection=document.createElement("section")
+
+humiditySection.id="humidity"
+humAndWindContainer.append(humiditySection)
+
+const humidityVal=document.createElement("h1")
+humidityVal.innerText=`48%`
+humidityVal.id="humidityVal"
+humiditySection.append(humidityVal)
+
+const humidityWord=document.createElement("h3")
+humidityWord.innerText=`Humidity`
+humidityWord.id="humidityWord"
+humiditySection.append(humidityWord)
 
 
+// wind section
 
+const windSection=document.createElement("section")
 
+windSection.id="wind"
+humAndWindContainer.append(windSection)
 
+const windVal=document.createElement("h1")
+windVal.innerText=`48%`
+windVal.id="windVal"
+windSection.append(windVal)
 
-
-
+const windWord=document.createElement("h3")
+windWord.innerText=`wind speed`
+windWord.id="windWord"
+windSection.append(windWord)
 
 
 

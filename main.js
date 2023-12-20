@@ -16,10 +16,10 @@ and return the object from API that match my coord to git the right one
 //!--------------------------------------------Start design the website-------------------------------------------//
 
 //using Dom To Call body to Holds HTML element
-const body =document.querySelector("body")
+ const body =document.querySelector("body")
 
 
-//! create welcome screen
+// //!----- create welcome screen
 
 // this div contain all element of welcome screen
 const welcomeScreenContainer=document.createElement("div")
@@ -37,14 +37,22 @@ logo.id="logo"
 logo.src="./assets/images/website-logo.png"
 logoContainer.append(logo)
 
+//create section to hold information about the website
+
 const startContainer=document.createElement("section")
 startContainer.id="start-c"
+// website name
 const websiteName=document.createElement("h1")
 websiteName.innerText="Weather Wise Hub"
 websiteName.id="webSiteName"
+
+//website Description
+
 const websiteDescription=document.createElement("h3")
 websiteDescription.id="websiteDescription"
 websiteDescription.innerText="Weather App"
+
+//create button to start the website
 const startButton=document.createElement('button')
 startButton.innerText="start"
 startButton.id="start-btn"
@@ -53,6 +61,10 @@ startContainer.append(websiteName,websiteDescription,startButton)
 welcomeScreenContainer.append(logoContainer,startContainer)
 console.log(welcomeScreenContainer);
 
+// //!----EventListener functions
+// document.querySelector("#start-btn").addEventListener("click",()=>{
+// //welcomeScreenContainer.style.display="none"
+// })
 
 
 
@@ -97,7 +109,7 @@ console.log(welcomeScreenContainer);
 // const success=(location)=>{
 //     lat=location?.coords?.latitude
 //     long=location?.coords?.longitude
-   
+//    console.log(location.coords);
 // }
 
 // const err=(err)=>{
@@ -113,7 +125,7 @@ console.log(welcomeScreenContainer);
 //     try {
 //            const res= await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric`)
 // const data = await res.json() 
-// console.log(data.main.temp);
+// console.log(data);
 //     } catch (error) {
 //        console.log(error); 
 //     }
@@ -122,7 +134,7 @@ console.log(welcomeScreenContainer);
 // }
 //   button.addEventListener("click",currentWeather)
   
-//  currentWeather()
+ //currentWeather()
 // const ress=async()=>{
 //     const res= await fetch("https://api.openweathermap.org/data/2.5/weather?lat=31.962552&lon=35.9043006&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric").then(res=>res.json()).then((currentWeather)=>{
 //         console.log(currentWeather.main.temp);

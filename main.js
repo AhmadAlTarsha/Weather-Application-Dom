@@ -97,7 +97,7 @@ welcomeScreenContainer.append(logoContainer, startContainer);
 
 //!-------------current weather&location card
 const createMainScreen = (weather,forrest) => {
-    console.log(weather.main.temp);
+    
     // create div to holds all main screen HTML element
     const mainScreenContainer = document.createElement("div");
     mainScreenContainer.id = "m-s-c";
@@ -184,23 +184,32 @@ const forrestContainer = document.createElement("section");
 forrestContainer.id = "forrestContainer";
 mainScreenContainer.append(forrestContainer);
 
-forrest.forecast.forecastday.forEach(()=>{
+forrest?.forecast?.forecastday.forEach((ele,index)=>{
+    console.log(ele.day.maxtemp_c
+        );
     const forrestInfo = document.createElement("div");
 forrestInfo.id = "forrestInfo";
 forrestContainer.append(forrestInfo);
 
-const forrestDate = document.createElement("h3");
-forrestDate.innerText = `date`;
+const forrestDate = document.createElement("h4");
+forrestDate.innerText = `${ele.date}`;
 forrestDate.id = "forrestTemp";
 forrestInfo.append(forrestDate);
 
 const forrestIcon = document.createElement("img");
-forrestIcon.src = `https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
+forrestIcon.src = `${ele?.day?.condition?.icon}`;
 forrestIcon.id = "forrestIcon";
 forrestInfo.append(forrestIcon);
 
-const forrestTemp = document.createElement("h3");
-forrestTemp.innerText = `Humidity`;
+const forrestText = document.createElement("h4");
+forrestText.innerText = `${ele?.day?.condition?.text}`;
+forrestText.id = "forrestText";
+forrestInfo.append(forrestText);
+
+const forrestTemp = document.createElement("h4");
+forrestTemp.innerText = `Max ${Math.round(ele?.day?.maxtemp_c)
+} °C/ Min ${Math.round(ele?.day?.mintemp_c)
+} °C ` ;
 forrestTemp.id = "forrestTemp";
 forrestInfo.append(forrestTemp);
 

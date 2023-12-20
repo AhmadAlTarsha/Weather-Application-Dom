@@ -73,7 +73,7 @@ gap: 10px;
 }
 
 #currentLocationSection {
-  width: 40%;
+  width: 30%;
   height: 70%;
   padding: 3%;
   border-radius: 20px;
@@ -95,7 +95,7 @@ font-size: 70px;
     width: 100%;
     align-items: center;
      display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 
    
    
@@ -103,7 +103,7 @@ font-size: 70px;
 
 /*!------------------------forrest card  */
 #forrestContainer{
-     width: 40%;
+     width: 60%;
   height: 70%;
   padding: 3%;
   border-radius: 20px;
@@ -121,5 +121,5 @@ font-size: 70px;
     height: 40%;
     align-items: center;
      display: flex;
-    justify-content: space-around;   
+    justify-content:space-between ;   
 }

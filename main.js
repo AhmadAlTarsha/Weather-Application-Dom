@@ -110,6 +110,17 @@ const createMainScreen = (weather,forrest) => {
     currentLocationContainer.id = "currentLocationSection";
     mainScreenContainer.append(currentLocationContainer);
 
+
+// input felid to allow user git any city weather
+const searchContainer=document.createElement("div")
+searchContainer.id = "searchContainer";
+currentLocationContainer.append(searchContainer);
+
+//create input field
+const searchInput=document.createElement("input")
+searchInput.id="searchInput"
+searchContainer.append(searchInput)
+
     //weather icon
     const imgContainer = document.createElement("div");
     imgContainer.id = "img-container";
@@ -208,7 +219,7 @@ forrestInfo.append(forrestText);
 
 const forrestTemp = document.createElement("h4");
 forrestTemp.innerText = `Max ${Math.round(ele?.day?.maxtemp_c)
-} °C/ Min ${Math.round(ele?.day?.mintemp_c)
+} °C / Min ${Math.round(ele?.day?.mintemp_c)
 } °C ` ;
 forrestTemp.id = "forrestTemp";
 forrestInfo.append(forrestTemp);

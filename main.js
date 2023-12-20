@@ -14,42 +14,29 @@ call the function agin to git his position
  i need to store lat and long from the function to use it in the weather api to make the process dynamic  */
 
 //!-----------------------------------------------Global var and data from API----------------------------------//
-
+const arr=[1,2,3]
 // this variable to store the value from API
 let lat;
 let long;
 
 
-
-//------this function to get  current position to the user
-// const userLocation = () => {
-//   const success = (location) => {
-//     lat = location?.coords?.latitude;
-//     long = location?.coords?.longitude;
-//   };
-//   const err = (err) => {
-//     console.log(err);
-//   };
-
-//   navigator.geolocation.getCurrentPosition(success, err);
-// };
 function getCurrentLocation() {
     return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(
-        (position) => resolve(position),
-        (error) => reject(error)
-      );
+        navigator.geolocation.getCurrentPosition(
+            (position) => resolve(position),
+            (error) => reject(error)
+        );
     });
-  }
-  
-  // Usage
-  getCurrentLocation()
+}
+
+// Usage
+getCurrentLocation()
     .then((position) => {
-        lat=position?.coords?.latitude;
-      long=position?.coords?.longitude;
+        lat = position?.coords?.latitude;
+        long = position?.coords?.longitude;
     })
     .catch((error) => {
-      console.error("Error getting location: " + error.message);
+        console.error("Error getting location: " + error.message);
     });
 
 
@@ -107,135 +94,156 @@ welcomeScreenContainer.append(logoContainer, startContainer);
 
 // //!------------------------------------------- create main screen
 
-const createMainScreen = (weather) => {
+
+//!-------------current weather&location card
+const createMainScreen = (weather,forrest) => {
     console.log(weather.main.temp);
-  // create div to holds all main screen HTML element
-  const mainScreenContainer = document.createElement("div");
-  mainScreenContainer.id = "m-s-c";
-  body.append(mainScreenContainer);
+    // create div to holds all main screen HTML element
+    const mainScreenContainer = document.createElement("div");
+    mainScreenContainer.id = "m-s-c";
+    body.append(mainScreenContainer);
 
-  //create current location and weather information section
+    //create current location and weather information section
 
-  const currentLocationContainer = document.createElement("section");
+    const currentLocationContainer = document.createElement("section");
 
-  currentLocationContainer.id = "currentLocationSection";
-  mainScreenContainer.append(currentLocationContainer);
+    currentLocationContainer.id = "currentLocationSection";
+    mainScreenContainer.append(currentLocationContainer);
 
-  //weather icon
-  const imgContainer = document.createElement("div");
-  imgContainer.id = "img-container";
-  currentLocationContainer.append(imgContainer);
-  const weatherIcon = document.createElement("img");
-  weatherIcon.src = `https://openweathermap.org/img/w/${weather.weather[0].icon}.png`;
-  weatherIcon.id = "weatherIcon";
-  imgContainer.append(weatherIcon);
+    //weather icon
+    const imgContainer = document.createElement("div");
+    imgContainer.id = "img-container";
+    currentLocationContainer.append(imgContainer);
+    const weatherIcon = document.createElement("img");
+    weatherIcon.src = `https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`;
+    weatherIcon.id = "weatherIcon";
+    imgContainer.append(weatherIcon);
 
-  //temperature
-  const temperature = document.createElement("h1");
-  temperature.innerText = `${Math.round(weather.main.temp)}${String.fromCharCode(176)}C`;
-  temperature.id = "temperature";
-  currentLocationContainer.append(temperature);
+    //temperature
+    const temperature = document.createElement("h1");
+    temperature.innerText = `${Math.round(weather.main.temp)}${String.fromCharCode(176)}C`;
+    temperature.id = "temperature";
+    currentLocationContainer.append(temperature);
 
-  //user location
-  const currentLocation = document.createElement("h1");
-  currentLocation.innerText = `${weather.sys.country}`;
-  currentLocation.id = "currentLocation";
-  currentLocationContainer.append(currentLocation);
+    //user location
+    const currentLocation = document.createElement("h1");
+    currentLocation.innerText = `${weather.sys.country}`;
+    currentLocation.id = "currentLocation";
+    currentLocationContainer.append(currentLocation);
 
-  //user city
-  const currentCity = document.createElement("h3");
-  currentCity.innerText = `${weather.name}`;
-  currentCity.id = "currentCity";
-  currentLocationContainer.append(currentCity);
+    //user city
+    const currentCity = document.createElement("h3");
+    currentCity.innerText = `${weather.name}`;
+    currentCity.id = "currentCity";
+    currentLocationContainer.append(currentCity);
 
-  // weather humidity and wind speed this div holds tow section  ( wind speed and Humidity)
+    // weather humidity and wind speed this div holds tow section  ( wind speed and Humidity)
 
-  const humAndWindContainer = document.createElement("div");
-  humAndWindContainer.id = "H-W-C";
-  currentLocationContainer.append(humAndWindContainer);
+    const humAndWindContainer = document.createElement("div");
+    humAndWindContainer.id = "H-W-C";
+    currentLocationContainer.append(humAndWindContainer);
 
-  //humidity section
+    //humidity section
 
-  const humiditySection = document.createElement("section");
+    const humiditySection = document.createElement("section");
 
-  humiditySection.id = "humidity";
-  humAndWindContainer.append(humiditySection);
+    humiditySection.id = "humidity";
+    humAndWindContainer.append(humiditySection);
 
-  const humidityVal = document.createElement("h1");
-  humidityVal.innerText = `${weather.main.humidity
-  }%`;
-  humidityVal.id = "humidityVal";
-  humiditySection.append(humidityVal);
+    const humidityVal = document.createElement("h1");
+    humidityVal.innerText = `${weather.main.humidity
+        }%`;
+    humidityVal.id = "humidityVal";
+    humiditySection.append(humidityVal);
 
-  const humidityWord = document.createElement("h3");
-  humidityWord.innerText = `Humidity`;
-  humidityWord.id = "humidityWord";
-  humiditySection.append(humidityWord);
+    const humidityWord = document.createElement("h3");
+    humidityWord.innerText = `Humidity`;
+    humidityWord.id = "humidityWord";
+    humiditySection.append(humidityWord);
 
-  // wind section
+    // wind section
 
-  const windSection = document.createElement("section");
+    const windSection = document.createElement("section");
 
-  windSection.id = "wind";
-  humAndWindContainer.append(windSection);
+    windSection.id = "wind";
+    humAndWindContainer.append(windSection);
 
-  const windVal = document.createElement("h1");
-  windVal.innerText = `${Math.round(weather.wind.speed) } km/h`;
-  windVal.id = "windVal";
-  windSection.append(windVal);
+    const windVal = document.createElement("h1");
+    windVal.innerText = `${Math.round(weather.wind.speed)} km/h`;
+    windVal.id = "windVal";
+    windSection.append(windVal);
 
-  const windWord = document.createElement("h3");
-  windWord.innerText = `wind speed`;
-  windWord.id = "windWord";
-  windSection.append(windWord);
+    const windWord = document.createElement("h3");
+    windWord.innerText = `wind speed`;
+    windWord.id = "windWord";
+    windSection.append(windWord);
+//!-------------forrest weather card
+
+const forrestContainer = document.createElement("section");
+
+forrestContainer.id = "forrestContainer";
+mainScreenContainer.append(forrestContainer);
+
+forrest.forecast.forecastday.forEach(()=>{
+    const forrestInfo = document.createElement("div");
+forrestInfo.id = "forrestInfo";
+forrestContainer.append(forrestInfo);
+
+const forrestDate = document.createElement("h3");
+forrestDate.innerText = `date`;
+forrestDate.id = "forrestTemp";
+forrestInfo.append(forrestDate);
+
+const forrestIcon = document.createElement("img");
+forrestIcon.src = `https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
+forrestIcon.id = "forrestIcon";
+forrestInfo.append(forrestIcon);
+
+const forrestTemp = document.createElement("h3");
+forrestTemp.innerText = `Humidity`;
+forrestTemp.id = "forrestTemp";
+forrestInfo.append(forrestTemp);
+
+})
 };
+
+
+
+
 
 //!-------------------------------EventListener functions
 
-document.querySelector("#start-btn").addEventListener("click",async () => {
-    
-  welcomeScreenContainer.style.display = "none";
+document.querySelector("#start-btn").addEventListener("click", async () => {
 
-  //this fun to get weather data from Api accord the lat and long that i but it in the URL
+    welcomeScreenContainer.style.display = "none";
 
-    //   try {
-    //     const response = await fetch(
-    //       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric`
-    //     );
-    //     const data = await response.json();
-    //     weather=data
-    // console.log(Math.round(data.main.temp));
-       
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    
-     const   weather= await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric`).then(res=>res.json()).catch((err)=>{console.log(err);}).catch(err=>{console.log(err);})
+    //this fun to get weather data from Api accord the lat and long that i but it in the URL
 
-     console.log(weather
+    const weather = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric`).then(res => res.json()).catch((err) => { console.log(err); }).catch(err => { console.log(err); })
 
-        );
-      createMainScreen(weather);
-    
-  
-  
-  console.log(lat);
-  console.log(long);
- 
+    const forrest=await  fetch(`https://api.weatherapi.com/v1/forecast.json?key=1612951226954bf0ada164306232012&q=${weather.name}&days=4&aqi=no&alerts=no`).then(res=>res.json()).catch((err)=>{console.log(err);}).catch(err=>{console.log(err);})
+    console.log(forrest.forecast.forecastday);
+    createMainScreen(weather,forrest);
+
+
+
+    console.log(lat);
+    console.log(long);
+
 });
 
-// let lat;
-// let long;
 
-// const button=document.createElement("button")
-// body.append(button)
-// button.innerText="get my location"
 
-// userLocation()
+// const btn=document.createElement("button")
+// btn.innerText="location"
+// btn.id="btn"
+// body.append(btn)
+// document.querySelector("#btn").addEventListener("click",async()=>{
+//     const   weather= await fetch(`https://api.weatherapi.com/v1/forecast.json?key=1612951226954bf0ada164306232012&q=london&days=2&aqi=no&alerts=no`).then(res=>res.json()).catch((err)=>{console.log(err);}).catch(err=>{console.log(err);})
+//     console.log(weather.forecast.forecastday
+//         );
 
-//   button.addEventListener("click",currentWeather)
 
-//currentWeather()
-
+// })
 
 

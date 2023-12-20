@@ -60,11 +60,13 @@ body {
 /* !--------------------------------------------------end welcome screen style */
 
 /*!---------------------------------------------------start style main screen */
+
+/*!------------------------current location&weather  */
 #m-s-c {
   justify-content: center;
   align-items: center;
   display: flex;
-
+gap: 10px;
   width: 100%;
   height: 100dvh;
   background-color: #4AB0D9;
@@ -78,8 +80,9 @@ body {
   background-image: linear-gradient(to bottom right,#c3c6c9,#0b4b84);
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+ 
 }
 
 
@@ -88,6 +91,7 @@ font-size: 70px;
 }
 
 #H-W-C{
+    padding: 10px;
     width: 100%;
     align-items: center;
      display: flex;
@@ -95,4 +99,27 @@ font-size: 70px;
 
    
    
+}
+
+/*!------------------------forrest card  */
+#forrestContainer{
+     width: 40%;
+  height: 70%;
+  padding: 3%;
+  border-radius: 20px;
+  background-image: linear-gradient(to bottom right,#1880e9,#0f1214);
+  display: flex;
+ flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+ 
+}
+
+#forrestInfo{
+    padding: 10px;
+    width: 100%;
+    height: 40%;
+    align-items: center;
+     display: flex;
+    justify-content: space-around;   
 }

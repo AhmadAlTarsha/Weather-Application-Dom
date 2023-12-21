@@ -252,6 +252,25 @@ forrestInfo.append(forrestTemp);
 };
 
 
+//!------------------------------------error handel function
+
+
+function showInvalidCityMessage() {
+  
+    document.querySelector("#searchContainer").style.display = "none";
+
+   
+    const devContainer = document.getElementById("dev-container");
+    devContainer.classList.remove("hidden");
+
+   
+    const retryButton = document.getElementById("retry-button");
+    retryButton.addEventListener("click", () => {
+      location.reload()
+    });
+}
+
+
 
 
 //!-------------------------------EventListener functions
@@ -280,19 +299,27 @@ document.querySelector("#searchInput").addEventListener("input",(e)=>{
 
 document.querySelector("#searchBtn").addEventListener("click",async()=>{
     
-console.log(currentCity);
+
        //this fun to get weather data from Api accord search bar 
 //    document.querySelector("#m-s-c").style.display="none"
 document.querySelector("#m-s-c").remove()
 
         const forrest = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric`).then(res => res.json()).catch((err) => { console.log(err); }).catch(err => { console.log(err); })
-        const forrest2=await  fetch(`https://api.weatherapi.com/v1/forecast.json?key=1612951226954bf0ada164306232012&q=${forrest.name}&days=4&aqi=no&alerts=no`).then(res=>res.json(),
+        
+        console.log(forrest.cod);
+//error handel to 
+if (forrest.cod==200) {
+    const forrest2=await  fetch(`https://api.weatherapi.com/v1/forecast.json?key=1612951226954bf0ada164306232012&q=${forrest.name}&days=4&aqi=no&alerts=no`).then(res=>res.json(),
         ).catch((err)=>{console.log(err);}).catch(err=>{console.log(err);})
       
       // re render the function to get new data from api and show it
 
       
         createMainScreen(forrest,forrest2);
+}else{
+    showInvalidCityMessage();
+}
+        
        
 
 })

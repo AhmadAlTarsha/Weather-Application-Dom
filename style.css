@@ -152,13 +152,11 @@ font-size: 70px;
 /* !-------------------------------------------------media query part-------------------------------------------- */
 
 
-/* Your existing CSS styles */
 
-/* Media query for screens smaller than 768px (typical mobile devices) */
 @media (max-width: 768px) {
     body {
       font-size: 14px;
-      display: grid; /* Adjust font size for smaller screens */
+      display: grid; 
     }
   
     #w-s-c {
@@ -177,27 +175,85 @@ font-size: 70px;
   
     #currentLocationSection {
       width: 100%; 
-      height: 50%; 
+      height: 40%; 
     }
   
     #searchContainer {
-      width: 100%; 
+        align-items: center;
+        justify-content: center;
+      width: auto; 
       display: flex; 
       flex-direction: column; 
+      gap:  3px;
     }
-  
+  #temperature{
+font-size: 30px;
+  }
     #searchBtn {
-      width: 100%; 
+      width: 20%; 
     }
-  
+  #H-W-C{
+    display: flex;
+  }
     #m-s-c {
       flex-direction: column;
+      justify-content: start;
+      gap: 3px;
     }
   
     #forrestContainer {
+        gap: 1px;
       width: 100%;
-      height: 50%; 
+      height: auto; 
     }
   }
   
-  
+  @media (max-width: 320px) {
+    #humidity{
+        display: flex;
+    }
+    #wind{
+        display: flex;
+    }
+    #forrestContainer{
+        font-size: xx-small;
+    }
+     #currentLocationSection{
+        font-size: xx-small;
+    }
+  }
+
+  /* !----------------------------------------------------error handel dev style */
+
+.hidden {
+    display: none;
+}
+
+#dev-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+#retry-button {
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#retry-button:hover {
+    background-color: #45a049;
+}

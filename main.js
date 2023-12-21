@@ -6,7 +6,6 @@ this fun return an object (coords) contains a lot of proparety i think i need (l
 finally to git the weather from API i need to put  the lat and long that i have from the geolocation fun
 and in the body of url API  to git the right one
 
-
  ok i think i can solve it In two ways: Either by tracking the user's location and making it a dynamic process by
  using navigator.geolocation.watchPosition;
  or I get the user's current location and when his done when he out and want use the website agin
@@ -14,11 +13,11 @@ call the function agin to git his position
  i need to store lat and long from the function to use it in the weather api to make the process dynamic  */
 
 //!-----------------------------------------------Global var and data from API----------------------------------//
-const arr=[1,2,3]
+
 // this variable to store the value from API
 let lat;
 let long;
-
+let currentCity;
 
 function getCurrentLocation() {
     return new Promise((resolve, reject) => {
@@ -47,8 +46,34 @@ getCurrentLocation()
 
 //!--------------------------------------------Start design the website-------------------------------------------//
 
+
+//!-------------------------------------------design search bar
+
 //using Dom To Call body to Holds HTML element
 const body = document.querySelector("body");
+
+
+// input felid to allow user git any city weather
+const searchContainer=document.createElement("div")
+searchContainer.id = "searchContainer";
+body.append(searchContainer);
+
+//create input field
+const searchInput=document.createElement("input")
+searchInput.id="searchInput"
+searchInput.placeholder="another city"
+searchContainer.append(searchInput)
+
+// create button to submit search
+const searchBtn=document.createElement("button")
+searchBtn.innerText="Search"
+searchBtn.id = "searchBtn";
+searchContainer.append(searchBtn);
+
+searchContainer.style.display="none"
+
+
+
 
 // //!------------------------------------------- create welcome screen
 
@@ -97,6 +122,7 @@ welcomeScreenContainer.append(logoContainer, startContainer);
 
 //!-------------current weather&location card
 const createMainScreen = (weather,forrest) => {
+  
     
     // create div to holds all main screen HTML element
     const mainScreenContainer = document.createElement("div");
@@ -116,10 +142,7 @@ const searchContainer=document.createElement("div")
 searchContainer.id = "searchContainer";
 currentLocationContainer.append(searchContainer);
 
-//create input field
-const searchInput=document.createElement("input")
-searchInput.id="searchInput"
-searchContainer.append(searchInput)
+
 
     //weather icon
     const imgContainer = document.createElement("div");
@@ -188,6 +211,8 @@ searchContainer.append(searchInput)
     windWord.innerText = `wind speed`;
     windWord.id = "windWord";
     windSection.append(windWord);
+
+
 //!-------------forrest weather card
 
 const forrestContainer = document.createElement("section");
@@ -196,8 +221,7 @@ forrestContainer.id = "forrestContainer";
 mainScreenContainer.append(forrestContainer);
 
 forrest?.forecast?.forecastday.forEach((ele,index)=>{
-    console.log(ele.day.maxtemp_c
-        );
+
     const forrestInfo = document.createElement("div");
 forrestInfo.id = "forrestInfo";
 forrestContainer.append(forrestInfo);
@@ -230,31 +254,42 @@ forrestInfo.append(forrestTemp);
 
 
 
-
 //!-------------------------------EventListener functions
 
 document.querySelector("#start-btn").addEventListener("click", async () => {
-
+console.log(currentCity);
     welcomeScreenContainer.style.display = "none";
+    searchContainer.style.display="flex"
 
     //this fun to get weather data from Api accord the lat and long that i but it in the URL
 
     const weather = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric`).then(res => res.json()).catch((err) => { console.log(err); }).catch(err => { console.log(err); })
 
     const forrest=await  fetch(`https://api.weatherapi.com/v1/forecast.json?key=1612951226954bf0ada164306232012&q=${weather.name}&days=4&aqi=no&alerts=no`).then(res=>res.json()).catch((err)=>{console.log(err);}).catch(err=>{console.log(err);})
-    console.log(forrest.forecast.forecastday);
+
+
     createMainScreen(weather,forrest);
-
-
-
-    console.log(lat);
-    console.log(long);
 
 });
 
+document.querySelector("#searchInput").addEventListener("input",(e)=>{
+   
+    currentCity=e.target.value
+})
 
 
-// const btn=document.createElement("button")
+document.querySelector("#searchBtn").addEventListener("click",async()=>{
+       //this fun to get weather data from Api accord search bar 
+    document.querySelector("#m-s-c").style.display="none"
+        const forrest = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric`).then(res => res.json()).catch((err) => { console.log(err); }).catch(err => { console.log(err); })
+        const forrest2=await  fetch(`https://api.weatherapi.com/v1/forecast.json?key=1612951226954bf0ada164306232012&q=${forrest.name}&days=4&aqi=no&alerts=no`).then(res=>res.json(),
+        ).catch((err)=>{console.log(err);}).catch(err=>{console.log(err);})
+      
+      // re render the function to get new data from api and show it
+        createMainScreen(forrest,forrest2);
+     
+
+})// const btn=document.createElement("button")
 // btn.innerText="location"
 // btn.id="btn"
 // body.append(btn)

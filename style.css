@@ -3,9 +3,10 @@
   box-sizing: border-box;
   margin: 0;
   font-family: cursive;
- color: white;
+
 }
 body {
+    color: white;
   background-color: #44aff2;
   display: flex;
   flex-direction: column;
@@ -14,6 +15,7 @@ body {
 }
 /* !--------------------------------------------------start welcome screen style */
 #w-s-c {
+    color: #000;
   display: flex;
   margin: 3%;
   padding: 20px;
@@ -77,7 +79,7 @@ gap: 10px;
     color: white;
   width: 30%;
   height: 70%;
-  padding: 3%;
+  padding: 1%;
   border-radius: 20px;
   background-image: linear-gradient(to bottom right,#c3c6c9,#0b4b84);
   display: flex;
@@ -102,7 +104,28 @@ font-size: 70px;
    
    
 }
-
+/* !-------------------------------search dev style */
+#searchContainer{
+    padding: 10px;
+    width: 30%;
+    align-items: center;
+     display: flex;
+    justify-content: space-between;
+   
+}
+#searchBtn{
+    cursor: pointer;
+    color: white;
+    font-size: medium;
+    padding: px 20px;
+    border: 0px;
+    border-radius: 20px;
+    background-image: linear-gradient(to bottom right,#1880e9,#333639);
+}
+#searchInput{
+    
+    border-radius: 20px;
+}
 /*!------------------------forrest card  */
 #forrestContainer{
      width: 60%;

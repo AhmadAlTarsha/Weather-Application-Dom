@@ -65,6 +65,7 @@ searchBtn.innerText="Search"
 searchBtn.id = "searchBtn";
 searchContainer.append(searchBtn);
 searchContainer.style.display="none"
+searchBtn.disabled=true 
 
 
 // //!------------------------------------------- create welcome screen
@@ -286,6 +287,13 @@ document.querySelector("#start-btn").addEventListener("click", async () => {
 document.querySelector("#searchInput").addEventListener("input",(e)=>{
    
     currentCity=e.target.value
+
+    if (!currentCity) {
+        searchBtn.disabled=true
+    }else{
+        searchBtn.disabled=false
+    }
+    
 })
 
 

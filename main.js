@@ -149,7 +149,7 @@ currentLocationContainer.append(searchContainer);
     imgContainer.id = "img-container";
     currentLocationContainer.append(imgContainer);
     const weatherIcon = document.createElement("img");
-    weatherIcon.src = `https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`;
+    weatherIcon.src = `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`;
     weatherIcon.id = "weatherIcon";
     imgContainer.append(weatherIcon);
 
@@ -282,12 +282,16 @@ document.querySelector("#searchBtn").addEventListener("click",async()=>{
     
 console.log(currentCity);
        //this fun to get weather data from Api accord search bar 
-   document.querySelector("#m-s-c").style.display="none"
+//    document.querySelector("#m-s-c").style.display="none"
+document.querySelector("#m-s-c").remove()
+
         const forrest = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric`).then(res => res.json()).catch((err) => { console.log(err); }).catch(err => { console.log(err); })
         const forrest2=await  fetch(`https://api.weatherapi.com/v1/forecast.json?key=1612951226954bf0ada164306232012&q=${forrest.name}&days=4&aqi=no&alerts=no`).then(res=>res.json(),
         ).catch((err)=>{console.log(err);}).catch(err=>{console.log(err);})
       
       // re render the function to get new data from api and show it
+
+      
         createMainScreen(forrest,forrest2);
        
 

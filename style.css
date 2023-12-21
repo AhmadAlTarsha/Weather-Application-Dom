@@ -111,7 +111,7 @@ font-size: 70px;
     align-items: center;
      display: flex;
     justify-content: space-between;
-   
+    background-color: transparent;
 }
 #searchBtn{
     cursor: pointer;
@@ -148,3 +148,56 @@ font-size: 70px;
      display: flex;
     justify-content:space-between ;   
 }
+
+/* !-------------------------------------------------media query part-------------------------------------------- */
+
+
+/* Your existing CSS styles */
+
+/* Media query for screens smaller than 768px (typical mobile devices) */
+@media (max-width: 768px) {
+    body {
+      font-size: 14px;
+      display: grid; /* Adjust font size for smaller screens */
+    }
+  
+    #w-s-c {
+      flex-direction: column; 
+      height: auto; 
+    }
+  
+    #logo-c {
+      width: 100%;
+      border-radius: 0;
+    }
+  
+    #start-c {
+      width: 100%; 
+    }
+  
+    #currentLocationSection {
+      width: 100%; 
+      height: 50%; 
+    }
+  
+    #searchContainer {
+      width: 100%; 
+      display: flex; 
+      flex-direction: column; 
+    }
+  
+    #searchBtn {
+      width: 100%; 
+    }
+  
+    #m-s-c {
+      flex-direction: column;
+    }
+  
+    #forrestContainer {
+      width: 100%;
+      height: 50%; 
+    }
+  }
+  
+  

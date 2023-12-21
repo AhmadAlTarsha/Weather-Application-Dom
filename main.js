@@ -19,6 +19,7 @@ let lat;
 let long;
 let currentCity;
 
+//this fun get current user location
 function getCurrentLocation() {
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(
@@ -39,18 +40,12 @@ getCurrentLocation()
     });
 
 
-
-
-
-
-
 //!--------------------------------------------Start design the website-------------------------------------------//
+//using Dom To Call body to Holds HTML element
+const body = document.querySelector("body");
 
 
 //!-------------------------------------------design search bar
-
-//using Dom To Call body to Holds HTML element
-const body = document.querySelector("body");
 
 
 // input felid to allow user git any city weather
@@ -69,10 +64,7 @@ const searchBtn=document.createElement("button")
 searchBtn.innerText="Search"
 searchBtn.id = "searchBtn";
 searchContainer.append(searchBtn);
-
 searchContainer.style.display="none"
-
-
 
 
 // //!------------------------------------------- create welcome screen
@@ -323,16 +315,5 @@ if (forrest.cod==200) {
        
 
 })
-// const btn=document.createElement("button")
-// btn.innerText="location"
-// btn.id="btn"
-// body.append(btn)
-// document.querySelector("#btn").addEventListener("click",async()=>{
-//     const   weather= await fetch(`https://api.weatherapi.com/v1/forecast.json?key=1612951226954bf0ada164306232012&q=london&days=2&aqi=no&alerts=no`).then(res=>res.json()).catch((err)=>{console.log(err);}).catch(err=>{console.log(err);})
-//     console.log(weather.forecast.forecastday
-//         );
-
-
-// })
 
 

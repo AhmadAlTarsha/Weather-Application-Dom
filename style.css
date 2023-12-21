@@ -149,6 +149,41 @@ font-size: 70px;
     justify-content:space-between ;   
 }
 
+  /* !----------------------------------------------------error handel dev style */
+
+  .hidden {
+    display: none;
+}
+
+#dev-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+#retry-button {
+    margin-top: 10px;
+    background-color: #0d10a8;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+
+
+
 /* !-------------------------------------------------media query part-------------------------------------------- */
 
 
@@ -223,37 +258,3 @@ font-size: 30px;
     }
   }
 
-  /* !----------------------------------------------------error handel dev style */
-
-.hidden {
-    display: none;
-}
-
-#dev-container {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #f44336;
-    padding: 10px;
-    text-align: center;
-    color: #fff;
-}
-
-#retry-button {
-    margin-top: 10px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-#retry-button:hover {
-    background-color: #45a049;
-}

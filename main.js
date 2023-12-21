@@ -257,7 +257,7 @@ forrestInfo.append(forrestTemp);
 //!-------------------------------EventListener functions
 
 document.querySelector("#start-btn").addEventListener("click", async () => {
-console.log(currentCity);
+
     welcomeScreenContainer.style.display = "none";
     searchContainer.style.display="flex"
 
@@ -279,17 +279,20 @@ document.querySelector("#searchInput").addEventListener("input",(e)=>{
 
 
 document.querySelector("#searchBtn").addEventListener("click",async()=>{
+    
+console.log(currentCity);
        //this fun to get weather data from Api accord search bar 
-    document.querySelector("#m-s-c").style.display="none"
-        const forrest = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric`).then(res => res.json()).catch((err) => { console.log(err); }).catch(err => { console.log(err); })
+   document.querySelector("#m-s-c").style.display="none"
+        const forrest = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric`).then(res => res.json()).catch((err) => { console.log(err); }).catch(err => { console.log(err); })
         const forrest2=await  fetch(`https://api.weatherapi.com/v1/forecast.json?key=1612951226954bf0ada164306232012&q=${forrest.name}&days=4&aqi=no&alerts=no`).then(res=>res.json(),
         ).catch((err)=>{console.log(err);}).catch(err=>{console.log(err);})
       
       // re render the function to get new data from api and show it
         createMainScreen(forrest,forrest2);
-     
+       
 
-})// const btn=document.createElement("button")
+})
+// const btn=document.createElement("button")
 // btn.innerText="location"
 // btn.id="btn"
 // body.append(btn)

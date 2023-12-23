@@ -124,8 +124,9 @@ font-size: 70px;
     background-image: linear-gradient(to bottom right,#1880e9,#333639);
 }
 #searchInput{
-    
+   padding: 8px; 
     border-radius: 20px;
+    font-weight: bolder;
 }
 /*!------------------------forrest card  */
 #forrestContainer{
@@ -147,7 +148,8 @@ font-size: 70px;
     height: 40%;
     align-items: center;
      display: flex;
-    justify-content:space-between ;   
+    justify-content:initial ;  
+    gap: 4%; 
 }
 
   /* !----------------------------------------------------error handel dev style */

@@ -20,7 +20,7 @@ let long;
 let currentCity;
 
 //this fun get current user location
-function getCurrentLocation() {
+const getCurrentLocation=()=> {
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(
             (position) => resolve(position),
@@ -36,7 +36,7 @@ getCurrentLocation()
         long = position?.coords?.longitude;
     })
     .catch((error) => {
-        console.error("Error getting location: " + error.message);
+        console.error(`Error getting location  ${error.message}`);
     });
 
 
@@ -69,7 +69,7 @@ searchBtn.disabled=true
 
 
 // //!------------------------------------------- create welcome screen
-
+const createWelcomeScreen=()=>{}
 // this div contain all element of welcome screen
 const welcomeScreenContainer = document.createElement("div");
 welcomeScreenContainer.id = "w-s-c";
@@ -142,19 +142,19 @@ currentLocationContainer.append(searchContainer);
     imgContainer.id = "img-container";
     currentLocationContainer.append(imgContainer);
     const weatherIcon = document.createElement("img");
-    weatherIcon.src = `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`;
+    weatherIcon.src = `https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`;
     weatherIcon.id = "weatherIcon";
     imgContainer.append(weatherIcon);
 
     //temperature
     const temperature = document.createElement("h1");
-    temperature.innerText = `${Math.round(weather.main.temp)}${String.fromCharCode(176)}C`;
+    temperature.innerText = `${Math.round(weather?.main?.temp)}${String.fromCharCode(176)}C`;
     temperature.id = "temperature";
     currentLocationContainer.append(temperature);
 
     //user location
     const currentLocation = document.createElement("h1");
-    currentLocation.innerText = `${weather.sys.country}`;
+    currentLocation.innerText = `${weather?.sys?.country}`;
     currentLocation.id = "currentLocation";
     currentLocationContainer.append(currentLocation);
 
@@ -178,7 +178,7 @@ currentLocationContainer.append(searchContainer);
     humAndWindContainer.append(humiditySection);
 
     const humidityVal = document.createElement("h1");
-    humidityVal.innerText = `${weather.main.humidity
+    humidityVal.innerText = `${weather?.main?.humidity
         }%`;
     humidityVal.id = "humidityVal";
     humiditySection.append(humidityVal);
@@ -196,7 +196,7 @@ currentLocationContainer.append(searchContainer);
     humAndWindContainer.append(windSection);
 
     const windVal = document.createElement("h1");
-    windVal.innerText = `${Math.round(weather.wind.speed)} km/h`;
+    windVal.innerText = `${Math.round(weather?.wind?.speed)} km/h`;
     windVal.id = "windVal";
     windSection.append(windVal);
 
@@ -248,7 +248,7 @@ forrestInfo.append(forrestTemp);
 //!------------------------------------error handel function
 
 
-function showInvalidCityMessage() {
+const showInvalidCityMessage=()=> {
   
     document.querySelector("#searchContainer").style.display = "none";
 
@@ -306,7 +306,7 @@ document.querySelector("#m-s-c").remove()
 
         const forrest = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=20df6ed2d3d499f39b1ec55b2f5a7406&units=metric`).then(res => res.json()).catch((err) => { console.log(err); }).catch(err => { console.log(err); })
         
-        console.log(forrest.cod);
+       
 //error handel to 
 if (forrest.cod==200) {
     const forrest2=await  fetch(`https://api.weatherapi.com/v1/forecast.json?key=1612951226954bf0ada164306232012&q=${forrest.name}&days=4&aqi=no&alerts=no`).then(res=>res.json(),
